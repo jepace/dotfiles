@@ -1,0 +1,7 @@
+new-window -d -n Root -t 1 sudo -s
+new-window 
+new-window -d -n Jagular -t 4 ssh jagular.pacehouse.com
+new-window -n Work -t 5
+split-window -t 5 -v
+split-window -t 5 -h
+new-window -d -t 9 top

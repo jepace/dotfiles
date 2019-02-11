@@ -1,0 +1,16 @@
+# $Id: $
+set -o vi
+
+alias vi="vim"
+alias df="df -H"
+alias c="clear"
+alias x="exit"
+alias cdc="cd; clear"
+
+# ls customization
+export LSCOLORS="gxfxcxdxbxegedabagacad"
+LSflags="-FGIah"
+alias ls="ls $LSflags"
+alias ll="ls -l $LSflags"
+
+set colored-stats="on"
