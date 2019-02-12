@@ -6,6 +6,10 @@
 set nocompatible
 filetype off
 
+" FIRST: 
+" git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+" :PluginInstall
+"
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
@@ -20,11 +24,11 @@ let g:explWinSize=20    " Width of Explorer window
 
 syntax on
 
-let c_comment_strings=1
+"let c_comment_strings=1
 set hlsearch                " Highlight search results
 set mousehide
 set number                  " Line numbers
-set relativenumber          " Woah...
+" set relativenumber          " Woah...
 
 set startofline
 
