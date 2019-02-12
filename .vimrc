@@ -2,12 +2,24 @@
 " Vim Resrouce File
 " for James E. Pace
 
+"Vundle
+set nocompatible
+filetype off
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+call vundle#end()
+filetype plugin indent on
+
+
 let g:explVertical=1    " split Explorer window vertically
 let g:explSplitRight=0  " split to right of explorer
 let g:explDirsFirst=0   " Dirs mixed with files in Explorer
 let g:explWinSize=20    " Width of Explorer window
 
 syntax on
+
 let c_comment_strings=1
 set hlsearch                " Highlight search results
 set mousehide
@@ -73,3 +85,6 @@ set showmatch
 "   set cinkeys=0{,0},0),:,!^F,o,O,e
 "   set cindent
 "ndfunction
+
+"A whole new world ... Bundles! (need vundle)
+Bundle 'christoomey/vim-tmux-navigator'
