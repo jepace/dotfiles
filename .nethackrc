@@ -1,0 +1,75 @@
+OPTIONS=autodig, autoopen, autopickup, autoquiver, boulder:0
+OPTIONS=catname:Pinto, clicklook, color, disclose:+i +a +v +g +c +o, dogname:Zoe
+OPTIONS=fruit:pussy, hilite_pet, hilite_pile, horsename:Gypsy, !legacy
+OPTIONS=menucolors, menustyle:combination, msghistory:30
+OPTIONS=msg_window:combination, number_pad: 1, pettype:dog, pickup_thrown
+OPTIONS=pickup_types:$"?+!=/, pushweapon, rest_on_space, safe_pet
+OPTIONS=scores:o 3a 10t, !showexp, silent, standout
+OPTIONS=symset:DECgraphics, time
+
+OPTIONS=statushilites
+## Coming in 3.6.1
+## Specify multiple cutoffs for all ability scores.
+#OPTIONS=hilite_status:characteristics/<5/red
+#OPTIONS=hilite_status:characteristics/>6/orange
+#OPTIONS=hilite_status:characteristics/>8/brown
+#OPTIONS=hilite_status:characteristics/>11/yellow
+#OPTIONS=hilite_status:characteristics/>13/green
+#OPTIONS=hilite_status:characteristics/>16/cyan
+#OPTIONS=hilite_status:characteristics/>18/lightblue
+## Hilight multiple encumbrance statuses.
+#OPTIONS=hilite_status:carrying-capacity/burdened/yellow/stressed/orange
+## Percentage cutoffs for hitpoints.
+#OPTIONS=hilite_status:hitpoints/100%/brightgreen
+#OPTIONS=hilite_status:hitpoints/<100%/green
+#OPTIONS=hilite_status:hitpoints/<60%/yellow
+#OPTIONS=hilite_status:hitpoints/<40%/red
+## Always show gold as the proper color.
+#OPTIONS=hilite_status:gold/always/yellow
+## Show when XL changes.
+#OPTIONS=hilite_status:experience-level/changed/white/cyan
+
+## With Menucolor Patch installed
+#OPTIONS=menucolors
+#MENUCOLOR="* blessed *"=green
+#MENUCOLOR="* holy *"=yellow
+#MENUCOLOR="* cursed *"=red
+#MENUCOLOR="* uncursed *"=cyan
+#MENUCOLOR="* unholy *"=brown
+#MENUCOLOR="* cursed * (being worn)"=red&underline
+
+# displacing pets
+MSGTYPE=hide "You displaced *"
+# items on floor
+MSGTYPE=norep "You see here a *"
+MSGTYPE=norep "You see here an *"
+# delayed instadeaths
+MSGTYPE=stop "The couatl swings itself around you!"
+MSGTYPE=stop "The electric eel swings itself around you!"
+MSGTYPE=stop "The giant eel swings itself around you!"
+MSGTYPE=stop "The kraken swings itself around you!"
+MSGTYPE=stop "The python grabs you!"
+MSGTYPE=stop "You don't feel very well."
+MSGTYPE=stop "You are turning a little green."
+MSGTYPE=stop "Your limbs are getting oozy."
+MSGTYPE=stop "Your skin begins to peel away."
+MSGTYPE=stop "You are turning into a green slime."
+MSGTYPE=stop "You are slowing down."
+MSGTYPE=stop "Your limbs are stiffening."
+MSGTYPE=stop "It constricts your throat!"
+MSGTYPE=stop "You find it hard to breathe."
+MSGTYPE=stop "You're gasping for air."
+MSGTYPE=stop "Your blood is having trouble reaching your brain."
+MSGTYPE=stop "You can no longer breathe."
+MSGTYPE=stop "You're turning blue."
+MSGTYPE=stop "Your consciousness is fading."
+MSGTYPE=stop "You feel deathly sick."
+MSGTYPE=stop "You feel much worse."
+MSGTYPE=stop "You feel even worse."
+#Things that aren't dangerous by themselves but could kill you if you don't notice.
+MSGTYPE=stop "You fail to cast the spell correctly."
+MSGTYPE=stop "You see here a cockatrice corpse."
+MSGTYPE=stop "You see here a chickatrice corpse."
+MSGTYPE=stop "You are beginning to feel weak."
+MSGTYPE=stop "You feel a strange vibration under your *."
+MSGTYPE=stop "You feel a strange vibration beneath you."
