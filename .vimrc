@@ -9,8 +9,10 @@ let g:explWinSize=20    " Width of Explorer window
 
 syntax on
 let c_comment_strings=1
-set hlsearch
+set hlsearch                " Highlight search results
 set mousehide
+set number                  " Line numbers
+set relativenumber          " Woah...
 
 set startofline
 
@@ -48,7 +50,7 @@ set shiftwidth=4
 
 set wildmenu    " show possible matches when tab hit
 
-" set title
+set title
 "et notitle
 " set titleold="Remote"
 set ruler
