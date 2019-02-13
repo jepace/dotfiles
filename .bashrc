@@ -20,7 +20,7 @@ case "$OSTYPE" in
     darwin*)
         echo "OSX"
         ;;
-    linux*)
+    linux-gnu*)
         echo "LINUX"
         LSflags="-FGah"
         ;;
