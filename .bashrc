@@ -22,7 +22,7 @@ case "$OSTYPE" in
         ;;
     linux-gnu*)
         echo "LINUX"
-        LSflags="-FGah"
+        LSflags="-FGah --color=auto"
         ;;
     cygwin)
         echo "Cygwin"
@@ -46,3 +46,4 @@ alias ll="ls -l $LSflags"
 export EDITOR="`which vim`"
 
 set colored-stats="on"
+cd ~
