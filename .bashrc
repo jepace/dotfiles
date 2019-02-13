@@ -37,6 +37,8 @@ alias df="df -H"
 alias c="clear"
 alias x="exit"
 alias cdc="cd; clear"
+alias mroe="more"
+alias tty-clock="tty-clock -x -c -C 6 -t -B"
 
 # ls customization
 export LSCOLORS="gxfxcxdxbxegedabagacad"
