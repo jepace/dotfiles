@@ -1,3 +1,10 @@
+# .bash_profile
+# $ Id: $
+
+# .bash_profile is used for login shells (so is mutually exclusing of
+# .bashrc)
+echo "Processing ~/.bash_profile..."
+
 SSH_ENV="$HOME/.ssh/environment"
 
 function start_agent {
@@ -21,18 +28,5 @@ else
     start_agent;
 fi
 
-set -o vi
-
-alias vi="vim"
-alias df="df -H"
-alias c="clear"
-alias x="exit"
-alias cdc="cd; clear"
-
-# ls customization
-export LSCOLORS="gxfxcxdxbxegedabagacad"
-LSflags="-FGIah"
-alias ls="ls $LSflags"
-alias ll="ls -l $LSflags"
-
-set colored-stats="on"
+# I want my bashrc
+[[ -r ~/.bashrc ]] && . ~/.bashrc
