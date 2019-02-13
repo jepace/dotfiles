@@ -2,7 +2,7 @@ OPTIONS=autodig, autoopen, autopickup, autoquiver, boulder:0
 OPTIONS=catname:Pinto, clicklook, color, disclose:+i +a +v +g +c +o, dogname:Zoe
 OPTIONS=fruit:pussy, hilite_pet, hilite_pile, horsename:Gypsy, !legacy
 OPTIONS=menucolors, menustyle:combination, msghistory:30
-OPTIONS=msg_window:combination, number_pad: 1, pettype:dog, pickup_thrown
+OPTIONS=msg_window:combination, number_pad:0, pettype:dog, pickup_thrown
 OPTIONS=pickup_types:$"?+!=/, pushweapon, rest_on_space, safe_pet
 OPTIONS=scores:o 3a 10t, !showexp, silent, standout
 OPTIONS=symset:DECgraphics, time
