@@ -64,4 +64,4 @@ man() {
 }
 
 peek() { tmux split-window -p 33 "$EDITOR" "$@" || exit; }
-tman () { tmux split-window -h -p 40 "man" "$@" }
+tman () { tmux split-window -h -p 40 "man" "$@" || exit; }
