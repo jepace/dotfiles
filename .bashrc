@@ -5,8 +5,8 @@
 echo "Processing ~/.bashrc..."
 
 # Colors chart: https://linuxconfig.org/bash-prompt-basics
-PS1="\h [\u:\033[00;36m\w\033[00m]$ " 
-export SUDO_PS1="\h [\033[01;31m\u:\033[00;36m\w\033[00m]# " 
+PS1="\h [\u:\e[00;36m\w\e[00m]\$ " 
+export SUDO_PS1="\h [\e[01;31m\u:\e[00;36m\w\e[00m]\$ " 
 
 set -o vi
 
@@ -49,11 +49,19 @@ alias ll="ls -l $LSflags"
 
 export EDITOR="`which vim`"
 export PAGER="`which less`"
-[[ -x /usr/local/bin/most ]] && export PAGER="`which most`"
 
 set colored-stats="on"
 cd ~
 
-peek() { tmux split-window -p 33 "$EDITOR" "$@" || exit; }
-tman () { tmux split-window -h -p 40 "man" -P $PAGER "$@" || exit; }
+man() {
+    LESS_TERMCAP_md=$'\e[01;31m' \
+    LESS_TERMCAP_me=$'\e[0m' \
+    LESS_TERMCAP_se=$'\e[0m' \
+    LESS_TERMCAP_so=$'\e[01;44;33m' \
+    LESS_TERMCAP_ue=$'\e[0m' \
+    LESS_TERMCAP_us=$'\e[01;32m' \
+    command man "$@"
+}
 
+peek() { tmux split-window -p 33 "$EDITOR" "$@" || exit; }
+tman () { tmux split-window -h -p 40 "man" "$@" }
