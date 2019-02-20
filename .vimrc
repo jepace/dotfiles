@@ -83,6 +83,9 @@ set showmatch
 " set redraw
 "et nobackup
 
+" Save and continue editing
+imap jj <ESC>:w<CR>a
+
 " My abbreviations
 " ab jep /* JEP */
 " ab endif #endif
