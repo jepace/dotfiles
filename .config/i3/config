@@ -49,19 +49,32 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+bindsym $mod+h focus left
 
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
+# Move windows
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+bindsym $mod+Shift+h move left
+
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# resize windows
+#
 # split
-bindsym $mod+v split vertical
-bindsym $mod+h split horizontal
+bindsym $mod+percent split vertical
+bindsym $mod+quotedbl split horizontal
 #bindsym $mod+t split toggle
 
 bindsym $mod+f fullscreen toggle
@@ -69,8 +82,10 @@ bindsym $mod+t floating toggle
 
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
 bindsym $mod+Shift+1 move container to workspace 1
 bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
 
 bindsym $mod+x layout toggle all	# cycle among layouts: stacking / tabbed / splith / splitv
 bindsym $mod+s layout stacking
@@ -86,4 +101,9 @@ gaps inner 20
 gaps outer 25
 #gaps horizontal 60
 #gaps outer current toggle 60
+
+# Starup commands:
+exec i3-sensible-terminal
+exec i3-sensible-terminal
+#exec workspace 2; /usr/local/bin/firefox; workspace 1
 
