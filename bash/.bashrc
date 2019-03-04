@@ -65,3 +65,7 @@ man() {
 
 peek() { tmux split-window -p 33 "$EDITOR" "$@" || exit; }
 tman () { tmux split-window -h -p 40 "man" "$@" || exit; }
+
+# Bring in fzf completions
+source ~/.bash/completion.bash
+source ~/.bash/key-bindings.bash
