@@ -1,0 +1,144 @@
+#!/bin/tcsh
+
+# $Id: .tcshrc,v 1.14 2014/11/03 19:53:22 jepace Exp $
+
+#if non-interactive, exit
+if (! $?prompt) exit 
+
+echo "Processing ~/.tcshrc"
+
+##############################################################################
+#
+# Setup Path
+#
+# Inheirited from .profile?  Do we want duplicates?  Where is
+# $USER/bin coming from???
+set path=( $HOME/usr/bin/$OSTYPE $HOME/usr/bin \
+            /sbin /usr/sbin /usr/local/sbin \
+            /bin /usr/bin /usr/local/bin \
+            $path )
+
+##############################################################################
+#
+# Environmental settings
+#
+bindkey -v
+stty intr 
+stty kill 
+#stty erase 
+umask 022
+
+##############################################################################
+#
+# Shell tunables
+#
+set history=(500)
+set savehist=(500)
+set histdup=prev
+set notify
+set filec
+set ignoreeof
+set autolist=ambiguous
+set autologout=(0,0)
+#set complete=enhance
+set symlinks=ignore
+set savedirs
+#set mail=~/mail/inbox
+set printexitvalue
+set time=7
+set watch=(any any)
+set who="%n has %a from %m"
+set ampm
+set color
+set autocorrect
+set autorehash
+#set correct=complete
+set correct=cmd
+set ellipsis
+# NB: COLOR EXAMPLE. SEE http://www.nparikh.org/unix/prompt.php
+# set prompt = "%{\033[1;32m%}%m%{\033[0m%} [%B%n%b:%U%.03%u] %# %L"
+set prompt = "%m [%B%n:%U%.03%u%b] %# %L"
+set rprompt="[%t]"
+
+##############################################################################
+#
+# Completions
+#
+complete find 'p/1/d/' 'n/-user/u/' 'n/-name/x:Name of object to find/' 'c/-/(name delete newer cpio ncpio exec ok user group fstype type atime ctime depth inum ls mtime nogroup nouser perm print prune size xdev)/'
+
+complete cd 'p/1/d/'
+complete echo 'p/1/v/'
+complete set 'p/1/s/'
+complete unset 'p/1/s/'
+complete setenv 'p/1/e/'
+complete unsetenv 'p/1/e/'
+complete ypcat 'p/*/(passwd group)/'
+complete ypmatch 'p/1/x:Key/' 'p/2/(passwd group)/'
+# complete kill 'p/*/`ps | awk \{print\ \$1\}`/'
+
+##############################################################################
+#
+# Aliases
+#
+if ( -x /usr/local/bin/vim ) then
+	alias vi    'vim -X'
+endif
+
+alias print     'enscript -2Grh -E'
+alias rdesktop  'rdesktop -g 1280x1024'
+alias phone     'grep -i \!* $HOME/files/phone'
+alias c         'clear'
+alias cdc       'cd; clear'
+alias x         'exit'
+alias mroe      'more'
+alias dir       'ls'
+
+setenv ARCH `uname -m`
+setenv VERS `uname -r`
+
+##############################################################################
+#
+# Application settings
+#
+setenv CVS_RSH ssh
+setenv EDITOR vim
+setenv PAGER less
+
+##############################################################################
+#
+# Deal with screen(1) issues (if possible)
+#
+if ( $TERM == "screen" ) then
+#    echo "Current display: $DISPLAY"
+#    echo "SSH socket: $SSH_AUTH_SOCK"
+#    if ( -f ~/.ssh/tmp/display.$HOST ) then
+#        setenv DISPLAY `cat ~/.ssh/tmp/display.$HOST`
+#        echo "Setting display to $DISPLAY"
+#    else
+#        echo "Creating display file."
+#        echo $DISPLAY >  ~/.ssh/tmp/display.$HOST
+#    endif
+endif
+
+##############################################################################
+#
+# Load Local settings
+#
+if ( -r ~/.tcshrc.local ) then
+    source ~/.tcshrc.local
+endif
+
+if ( -r ~/.tcshrc.$OSTYPE ) then
+    source ~/.tcshrc.$OSTYPE
+endif
+
+if ( -r ~/.tcshrc.$HOST ) then
+echo $HOST
+    source ~/.tcshrc.$HOST
+endif
+
+##############################################################################
+#
+# Done
+#
+echo "Leaving ~/.tcshrc"

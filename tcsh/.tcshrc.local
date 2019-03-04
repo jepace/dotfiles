@@ -1,0 +1,12 @@
+#!/bin/tcsh
+
+# $Id: .tcshrc.local,v 1.2 2013/07/14 22:44:21 jepace Exp $
+
+echo "Processing ~/.tcshrc.local for PaceHouse"
+
+setenv CVSROOT /pool/CVS_Repository
+
+alias   bashful 'ssh -Nf -L 20000:bashful:3389 iwov'
+alias   nylon   'ssh -Nf -L 20001:nylon:3389 iwov'
+
+echo "Leaving ~/.tcshrc.local for PaceHouse"

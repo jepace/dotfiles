@@ -1,0 +1,13 @@
+#!/bin/tcsh
+
+# $Id: .tcshrc.NetBSD,v 1.1 2014/11/03 19:49:06 jepace Exp $
+
+echo "Processing ~/.tcshrc.$OSTYPE for PaceHouse"
+
+setenv PKG_PATH ftp://ftp.netbsd.org/pub/pkgsrc/packages/NetBSD/$ARCH/$VERS/All
+alias df    'df -h'
+alias ls    'ls -AsF'
+alias ll    'ls -lasF'
+alias psa   'ps -auxww'
+
+echo "Leaving ~/.tcshrc.$OSTYPE for PaceHouse"

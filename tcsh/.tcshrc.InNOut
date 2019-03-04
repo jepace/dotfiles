@@ -1,0 +1,9 @@
+#!/bin/tcsh
+
+# $Id: .tcshrc.InNOut,v 1.1 2016/02/25 00:22:28 jepace Exp $
+
+echo "Processing ~/.tcshrc.$HOST for PaceHouse"
+
+setenv CVSROOT jepace@tigger.pacehouse.com:/pool/CVS_Repository
+
+echo "Leaving ~/.tcshrc.$HOST for PaceHouse"

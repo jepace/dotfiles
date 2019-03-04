@@ -1,0 +1,13 @@
+#!/bin/tcsh
+
+# $Id: .tcshrc.FreeBSD,v 1.1 2014/11/03 19:53:22 jepace Exp $
+
+echo "Processing ~/.tcshrc.$OSTYPE for PaceHouse"
+
+alias startx    '/usr/bin/ssh-agent /usr/local/bin/startx'
+alias df    'df -h'
+alias ls    'ls -AsFG'
+alias ll    'ls -lasFG'
+alias psa   'ps -auxww'
+
+echo "Leaving ~/.tcshrc.$OSTYPE for PaceHouse"

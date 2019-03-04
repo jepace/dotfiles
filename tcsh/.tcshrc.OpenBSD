@@ -1,0 +1,14 @@
+#!/usr/local/bin/tcsh
+
+# $Id: .tcshrc.OpenBSD,v 1.3 2014/11/03 23:36:57 jepace Exp $
+
+echo "Processing ~/.tcshrc.$OSTYPE for PaceHouse"
+
+setenv CVSROOT tigger.pacehouse.com:/pool/CVS_Repository
+
+alias df    'df -h'
+alias ls    'ls -AsF'
+alias ll    'ls -lasF'
+alias psa   'ps -auxww'
+
+echo "Leaving ~/.tcshrc.$OSTYPE for PaceHouse"

@@ -1,0 +1,11 @@
+#!/bin/tcsh
+
+# $Id: .tcshrc.solaris,v 1.1 2014/11/03 19:53:22 jepace Exp $
+
+echo "Processing ~/.tcshrc.$OSTYPE for PaceHouse"
+
+setenv CVSROOT tigger.pacehouse.com:/pool/CVS_Repository
+
+set path= ( $path /usr/ucb /usr/ccs/bin /usr/dt/bin /usr/proc/bin )
+
+echo "Leaving ~/.tcshrc.$OSTYPE for PaceHouse"
