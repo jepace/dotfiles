@@ -24,7 +24,7 @@ case "$OSTYPE" in
         ;;
     linux-gnu*)
         echo "LINUX"
-        LSflags="-FGah --color=auto"
+        LSflags="-FGAhf --color=auto"
         ;;
     cygwin)
         echo "Cygwin"
@@ -67,5 +67,9 @@ peek() { tmux split-window -p 33 "$EDITOR" "$@" || exit; }
 tman () { tmux split-window -h -p 40 "man" "$@" || exit; }
 
 # Bring in fzf completions
-source ~/.bash/completion.bash
-source ~/.bash/key-bindings.bash
+[ -f ~/.bash/completion.bash ] && \
+    source ~/.bash/completion.bash
+[ -f ~/.bash/key-bindings.bash ] && \
+    source ~/.bash/key-bindings.bash
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

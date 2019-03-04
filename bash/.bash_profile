@@ -29,4 +29,4 @@ else
 fi
 
 # I want my bashrc
-[[ -r ~/.bashrc ]] && . ~/.bashrc
+[ -r ~/.bashrc ] && source ~/.bashrc
