@@ -10,6 +10,10 @@ export SUDO_PS1="\h [\e[01;31m\u:\e[00;36m\w\e[00m]\$ "
 
 set -o vi
 
+# Bash-completion
+[[ $PS1 && -f /usr/local/share/bash-completion/bash_completion.sh ]] && \
+    source /usr/local/share/bash-completion/bash_completion.sh
+
 # OS specific settings
 case "$OSTYPE" in
     freebsd*) 
