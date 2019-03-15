@@ -45,6 +45,7 @@ alias x="exit"
 alias cdc="cd; clear"
 alias mroe="more"
 alias tty-clock="tty-clock -x -c -C 6 -t -B"
+alias psa="ps -auxww"
 
 # ls customization
 export LSCOLORS="gxfxcxdxbxegedabagacad"

@@ -17,13 +17,6 @@ font -*terminus-medium-r-normal-*-12-*-*-*-*-*-iso8859-1
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
 
-# Before i3 v4.8, we used to recommend this one as the default:
-# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-# The font above is very space-efficient, that is, it looks good, sharp and
-# clear in small sizes. However, its unicode glyph coverage is limited, the old
-# X core fonts rendering does not support right-to-left and this being a bitmap
-# font, it doesn’t scale on retina/hidpi displays.
-
 bar {
 	status_command i3status 
 	mode dock
@@ -45,8 +38,7 @@ focus_follows_mouse no
 floating_modifier $mod
 
 # start a terminal
-#bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec urxvtc
+bindsym $mod+Return exec i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -86,10 +78,10 @@ bindsym $mod+Shift+Right move right
 mode "resize" {
     # These bindings trigger as soon as you enter the resize mode
 
-    # Pressing left will shrink the window’s width.
-    # Pressing right will grow the window’s width.
-    # Pressing up will shrink the window’s height.
-    # Pressing down will grow the window’s height.
+    # Pressing left will shrink the window's width.
+    # Pressing right will grow the window's width.
+    # Pressing up will shrink the window's height.
+    # Pressing down will grow the window's height.
     bindsym h resize shrink width 10 px or 10 ppt
     bindsym j resize grow height 10 px or 10 ppt
     bindsym k resize shrink height 10 px or 10 ppt
@@ -130,7 +122,8 @@ bindsym $mod+e layout toggle split
 
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
-bindsym $mod+Shift+e exec --no-startup-id "i3-nagbar -t warning -m 'Exit i3?' -b 'yes' 'i3-msg exit'"
+bindsym $mod+Shift+e exit
+#bindsym $mod+Shift+e exec --no-startup-id "i3-nagbar -t warning -m 'Exit i3?' -b 'yes' 'i3-msg exit'"
 
 set $bg-color            #2f343f
 set $inactive-bg-color   #2f343f
@@ -149,7 +142,8 @@ client.urgent           $urgent-bg-color    $urgent-bg-color     $text-color    
 # Application keybindings
 
 # ctrl+alt+L to lock the screen
-bindsym Control+mod1+l exec --no-startup-id i3lock -i /usr/local/share/wallpaper/wallpaper.png -t
+bindsym Control+mod+l exec --no-startup-id i3lock -i /usr/local/share/wallpaper/wallpaper.png -t
+#bindsym Control+mod1+l exec --no-startup-id i3lock -i /usr/local/share/wallpaper/wallpaper.png -t
 
 # raise/lower volume with the ThinkPads volume keys. The mute key appears
 # to be a hardware-level mute. It works, but it doesn't register any
@@ -178,6 +172,5 @@ gaps outer 25
 #gaps outer current toggle 60
 
 # Starup commands:
-exec i3-sensible-terminal
-exec i3-sensible-terminal
-#exec workspace 2; /usr/local/bin/firefox; workspace 1
+exec i3-sensible-terminal -e bash -c "tmux att || tmux new"
+exec_always xautolock -time 5 -locker /home/jepace/usr/bin/lock.sh
