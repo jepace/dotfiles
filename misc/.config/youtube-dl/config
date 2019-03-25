@@ -1,0 +1,11 @@
+# Configuration of YouTube downloader (youtube-dl)
+
+# do not copy mtime
+--no-mtime
+
+# keep going!
+--ignore-errors
+
+# clean filenames
+--restrict-filenames
+
