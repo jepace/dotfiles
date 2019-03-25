@@ -53,6 +53,7 @@ set incsearch
 " no ^Ms
 set ff=unix
 
+set spell           " spell checker!
 set noignorecase
 " set smartcase
 " set smartindent
@@ -102,3 +103,4 @@ imap jj <ESC>:w<CR>a
 
 "A whole new world ... Bundles! (need vundle)
 Bundle 'christoomey/vim-tmux-navigator'
+Plugin 'vimwiki/vimwiki'

@@ -11,7 +11,9 @@ set $mod Mod4
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 #font pango:monospace 8
-font -*terminus-medium-r-normal-*-12-*-*-*-*-*-iso8859-1
+#font -*terminus-medium-r-normal-*-12-*-*-*-*-*-iso8859-1
+#font pango: M+ 1m, FontAwesome, Ionicons, 10
+font -*terminus-medium-r-normal-*-12-*-*-*-*-*-iso8859-1: M+ 1m, FontAwesome, Ionicons, 10
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -102,7 +104,7 @@ bindsym $mod+r mode "resize"
 #
 # split
 bindsym $mod+percent split vertical
-bindsym $mod+quotedbl split horizontal
+bindsym $mod+Shift+quote split horizontal
 #bindsym $mod+t split toggle
 
 bindsym $mod+f fullscreen toggle
@@ -111,9 +113,13 @@ bindsym $mod+t floating toggle
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
 bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
 bindsym $mod+Shift+1 move container to workspace 1
 bindsym $mod+Shift+2 move container to workspace 2
 bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
 
 #bindsym $mod+x layout toggle all	# cycle among layouts: stacking / tabbed / splith / splitv
 bindsym $mod+s layout stacking
@@ -142,20 +148,24 @@ client.urgent           $urgent-bg-color    $urgent-bg-color     $text-color    
 # Application keybindings
 
 # ctrl+alt+L to lock the screen
-bindsym Control+mod+l exec --no-startup-id i3lock -i /usr/local/share/wallpaper/wallpaper.png -t
-#bindsym Control+mod1+l exec --no-startup-id i3lock -i /usr/local/share/wallpaper/wallpaper.png -t
+# bindsym Control+mod1+l exec --no-startup-id i3lock -i /usr/local/share/wallpaper/wallpaper.png -t
+bindsym Control+mod+l exec --no-startup-id /home/jepace/usr/bin/lock.sh
+exec xautolock -time 10 -locker /home/jepace/usr/bin/lock.sh
 
 # raise/lower volume with the ThinkPads volume keys. The mute key appears
 # to be a hardware-level mute. It works, but it doesn't register any
 # change in the OSS mixer.
 bindsym XF86AudioRaiseVolume exec --no-startup-id "mixer vol +5 && pkill -SIGUSR1 i3status"
 bindsym XF86AudioLowerVolume exec --no-startup-id "mixer vol -5 && pkill -SIGUSR1 i3status"
+#bindsym XF86AudioMute exec --no-startup-id "mixer pcm 0 && pkill -SUGUSR1 i3status" 
+#bindsym Shift+XF86AudioMute exec --no-startup-id "mixer pcm 100 && pkill -SUGUSR1 i3status" 
+#bindsym $mod+F1 exec mixer pcm 0 
+#bindsym $mod+Shift+F1 exec --no-startup-id "mixer pcm 100 && pkill -SUGUSR1 i3status" 
 
 # start rofi (window switcher)
 bindsym $mod+Tab exec rofi -show window
 # start rofi (ssh host autocomplete)
 bindsym $mod+x exec rofi -show ssh
-
 
 # some windows should float by default
 for_window [class="feh"] floating enable
@@ -167,10 +177,10 @@ for_window [title="Download Manager"] floating enable
 
 # Examples
 gaps inner 20
-gaps outer 25
+gaps outer 20
 #gaps horizontal 60
 #gaps outer current toggle 60
 
 # Starup commands:
+exec /usr/local/bin/compton -b
 exec i3-sensible-terminal -e bash -c "tmux att || tmux new"
-exec_always xautolock -time 5 -locker /home/jepace/usr/bin/lock.sh

@@ -78,3 +78,5 @@ tman () { tmux split-window -h -p 40 "man" "$@" || exit; }
     source ~/.bash/key-bindings.bash
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+eval $(thefuck --alias)

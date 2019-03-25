@@ -8,6 +8,7 @@ order += "disk /"
 order += "wireless wlan0"
 order += "battery 0"
 order += "load"
+order += "volume master"
 order += "tztime local"
 
 #order += "disk /pool"
@@ -71,8 +72,8 @@ load {
 #}
 
 disk "/" {
-	format = "/: %free free"
-	low_threshold = "5"
+	format = "/: %free"
+	low_threshold = "10"
 	threshold_type = "percentage_free"
     prefix_type="custom"
 }
@@ -83,3 +84,10 @@ disk "/pool" {
 	threshold_type = "percentage_free"
 }
 
+volume master {
+    format = "V: %volume"
+    format_muted = "V: %volume [Mute]"
+    device = "default"
+    mixer = "Master"
+    mixer_idx = 0
+}

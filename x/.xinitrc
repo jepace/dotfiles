@@ -35,4 +35,9 @@ xrdb -merge ~/.Xresources
 #export SSH_ASKPASS=/usr/local/bin/ssh-askpass
 #eval `keychain --quiet --eval --agents ssh,gpg id_ed25519 id_rsa cullum@c0ffee.net`
 
+# Trying out i3wm
 exec /usr/bin/ssh-agent /usr/local/bin/i3
+
+# Trying out bspwm
+#sxhkd &
+#exec /usr/bin/ssh-agent bspwm
