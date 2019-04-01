@@ -4,6 +4,8 @@
 # bashrc is used for non-login interactive shells
 echo "Processing ~/.bashrc..."
 
+PATH=$PATH:~jepace/usr/bin
+
 # Colors chart: https://linuxconfig.org/bash-prompt-basics
 PS1="\h [\u:\e[00;36m\w\e[00m]\$ " 
 export SUDO_PS1="\h [\e[01;31m\u:\e[00;36m\w\e[00m]\$ " 
@@ -46,6 +48,7 @@ alias cdc="cd; clear"
 alias mroe="more"
 alias tty-clock="tty-clock -x -c -C 6 -t -B"
 alias psa="ps -auxww"
+alias nif="sudo service netif restart"
 
 # ls customization
 export LSCOLORS="gxfxcxdxbxegedabagacad"

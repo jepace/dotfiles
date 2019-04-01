@@ -1,3 +1,4 @@
+URxvt.font                 : -*-*-medium-r-normal-*-18-*-*-*-*-*-iso8859-1
 !! URxvt.font                 : -*-Terminus-medium-r-normal-*-12-*-*-*-*-*-iso8859-1
 !! URxvt.boldFont             : -*-Terminus-medium-r-normal-*-12-*-*-*-*-*-iso8859-1
 !! URxvt.italicFont           : -*-Terminus-medium-r-normal-*-12-*-*-*-*-*-iso8859-1
