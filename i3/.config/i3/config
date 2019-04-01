@@ -95,15 +95,15 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-set $ws1 "1: Terminal "
-set $ws2 "2: Firefox "
-set $ws3 "3: Office "
+set $ws1 "1: "
+set $ws2 "2: "
+set $ws3 "3: "
 set $ws4 "4"
 set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
-set $ws9 "9: Music "
+set $ws9 "9: "
 set $ws10 "10"
 
 bindsym $mod+1 workspace $ws1
@@ -143,7 +143,7 @@ bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
-bindsym $mod+Shift+c reload
+# bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exit
 

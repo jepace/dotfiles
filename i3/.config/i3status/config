@@ -21,8 +21,7 @@ order += "tztime local"
 #order += "cpu__first_ 0"
 
 wireless wlan0 {
-    format_up = "%essid"
-    # format_up = "%essid: %ip %quality / %bitrate"
+    format_up = " %essid"
     format_down = "(no WiFi)"
 }
 
@@ -35,9 +34,9 @@ ethernet em0 {
 battery 0 {
 	format = "%status %percentage %remaining"
 	format_down = "No battery"
-	status_chr = "CHRG"
-	status_bat = "BATT"
-	status_full = ""
+	status_chr = " "
+	status_bat = " "
+	status_full = " "
 	status_unk = "(bad)"
 	path = "/sys/class/power_supply/BAT%d/uevent"
 	low_threshold = 10
@@ -63,7 +62,7 @@ tztime local {
 }
 
 load {
-	format = "%5min"
+	format = "  %5min"
 }
 
 # cpu_temperature 0 {
@@ -72,7 +71,7 @@ load {
 #}
 
 disk "/" {
-	format = "/: %free"
+	format = "  %free"
 	low_threshold = "10"
 	threshold_type = "percentage_free"
     prefix_type="custom"
@@ -85,8 +84,8 @@ disk "/pool" {
 }
 
 volume master {
-    format = "V: %volume"
-    format_muted = "V: %volume [Mute]"
+    format = "  %volume"
+    format_muted = "  %volume [Mute]"
     device = "default"
     mixer = "Master"
     mixer_idx = 0
