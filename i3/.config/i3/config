@@ -216,4 +216,4 @@ workspace_auto_back_and_forth yes
 
 # Starup commands:
 exec /usr/local/bin/compton -bfc # f - fade; c - shadows; -b - daemonize
-exec --no-startup-id i3-msg 'exec i3-sensible-terminal -e bash -c "tmux att || tmux new"'
+exec --no-startup-id i3-msg 'exec i3-sensible-terminal -e bash -c "tmux att -d || tmux new"'
