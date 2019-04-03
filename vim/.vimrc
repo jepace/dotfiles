@@ -16,7 +16,9 @@ Plugin 'VundleVim/Vundle.vim'
 call vundle#end()
 filetype plugin indent on
 
-set rtp+=~/.fzf/
+"set rtp+=~/usr/src/fzf/
+"Plugin 'junegunn/fzf'
+"Plugin 'junegunn/fzf.vim'
 
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -39,8 +41,8 @@ set number                  " Line numbers
 
 set startofline
 
-" spelling check
-map #i  :w<CR>:!aspell -c %<CR>:e %<CR>
+" spelling check // Use built in set spell now
+" map #i  :w<CR>:!aspell -c %<CR>:e %<CR>
 " map #i  :w<CR>:!ispell %<CR>:e %<CR>
 
 " remove extra white space at end of line; cutting and pasting is
@@ -55,9 +57,11 @@ set ff=unix
 
 set spell           " spell checker!
 set noignorecase
-" set smartcase
+set smartcase
 " set smartindent
-set cinoptions=t0,(0
+set cindent
+" set cinoptions=t0,(0
+" set indentexpr
 set shiftwidth=4
 set tabstop=4       " tab stop of 4 characters
 set softtabstop=4
@@ -86,6 +90,13 @@ set showmatch
 "set redraw
 "set nobackup
 
+set undofile
+set undodir='~/.vim/undo/'
+
+set clipboard+=unnamed
+
+"set termguicolors " was promised magic, but it makes things worse..
+
 " Save and continue editing
 imap jj <ESC>:w<CR>a
 
@@ -104,9 +115,20 @@ imap jj <ESC>:w<CR>a
 "A whole new world ... Bundles! (need vundle)
 Bundle 'christoomey/vim-tmux-navigator'
 Plugin 'vimwiki/vimwiki'
+Bundle 'wellle/tmux-complete.vim'
+
+" These are supposed to invoke fzf cleverly.. I don't get it.
+"nnoremap ; :Buffers<CR>
+"nnoremap f :Files<CR>
+"nnoremap T :Tags<CR>
+"nnoremap t :BTags<CR>
+"nnoremap s :Ag<CR>
 
 " Vimwiki settings
 let g:vimwiki_folding='expr:quick'
 let g:vimwiki_list = [{'path' : '~/PaceHouse/vimwiki/', 
                      \ 'path_html' : '~/public_html/wiki/',
                      \ 'auto_export' : 1 }]
+
+" tmux complete
+let g:tmuxcomplete#trigger = 'completefunc'
