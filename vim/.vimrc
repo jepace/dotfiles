@@ -93,7 +93,14 @@ set showmatch
 set undofile
 set undodir='~/.vim/undo/'
 
+" Copy and paste ... 
+" the clipboard line was supposed to be magic, but nope..
+" F7 - copy
+" Shift F7 - paste
 set clipboard+=unnamed
+map <F7> :w!xclip<CR><CR>
+vmap <F7> "*y
+map <S-F7> :r!xclip -o<CR>
 
 "set termguicolors " was promised magic, but it makes things worse..
 
@@ -106,18 +113,13 @@ imap jj <ESC>:w<CR>a
 "ab dbg #ifdef DEBUG
 "ab w32 if ( $^O eq "MSWin32" )
 
-"function! Set_perl_mode()
-"   " Keep perl '#' out where we are, not at 0
-"   set cinkeys=0{,0},0),:,!^F,o,O,e
-"   set cindent
-"endfunction
-
 "A whole new world ... Bundles! (need vundle)
 Bundle 'christoomey/vim-tmux-navigator'
 Plugin 'vimwiki/vimwiki'
 Bundle 'wellle/tmux-complete.vim'
 
-" These are supposed to invoke fzf cleverly.. I don't get it.
+" These are supposed to invoke fzf cleverly.. I don't get it.  Need
+" the fzf plugin!
 "nnoremap ; :Buffers<CR>
 "nnoremap f :Files<CR>
 "nnoremap T :Tags<CR>

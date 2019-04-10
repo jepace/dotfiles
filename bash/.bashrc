@@ -63,6 +63,7 @@ alias tty-clock="tty-clock -x -c -C 6 -t -B"
 alias psa="ps -auxww"
 alias nif="sudo service netif restart"
 alias feh="feh --output-dir ~/Downloads/Pictures/feh/ --scale-down "
+alias t="task"
 
 # ls customization
 export LSCOLORS="gxfxcxdxbxegedabagacad"
