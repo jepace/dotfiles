@@ -1,0 +1,74 @@
+/* $Id: calendar,v 1.2 2003/08/05 21:28:59 jepace Exp jepace */
+
+/* Dates */
+2/03	Dating Anniversary (1991)
+8/09	Wedding Anniversary (1997)
+
+/* Birthdays */
+1/05	Sean Scott's Birthday (1972)
+1/16    Martin McCarthy's Birthday (1904)
+2/12	Rory Caswell Pace's Birthday (1972)
+2/12	Glenn Pace's Birthday (1938)
+2/14	Tom Caswell's Birthday (1944)
+3/08	Jim Symons' Birthday
+3/08    Bergin Balmer Russell's Birthday (2004)
+3/10	Jake Sanderson's Birthday (1974)
+3/18	Lori Galeband's Birthday
+3/20	David Pace's Birthday (1968)
+4/07	David Ferguson's Birthday (1972)
+4/14	Ian Wallace's Birthday (1972)
+4/30	John Stone's Birthday
+5/04    Meg Worley's Birthday
+5/12    Andrew Caldwell's Birthday (2004)
+5/13    Ed Caldwell's Birthday (1973)
+5/19	Andy Cooper's Birthday
+5/21	Mary Jane Cooper's Birthday
+6/02	Gale Caswell's Birthday (1945)
+6/09	Leeann Bent's Birthday
+6/19	Ethan Pace's Birthday (2003)
+6/20	Andrew Elmore's Birthday (1972)
+6/22	Olivia Burke's Birthday (2000)
+6/30	Avery Nicole Ball's Birthday (2004)
+7/03	Jon Lamb's Birthday (1972)
+7/12	Frank Murphy's Birthday
+7/18	Noreen Kakalec's Birthday
+7/26	Gavin Caswell's Birthday (1983)
+7/27	Sloane Pace's Birthday (2000)
+8/02    Nicholas & Kaitlyn Mason's Birthdays (2004)
+8/05	Beverley Pace's Birthday (1939)
+8/16	Mycki Symons' Birthday (1940)
+9/06	Rhonda Jones' Birthday (1971)
+9/07	Tara Marchand's Birthday (1972)
+9/12	James Pace's Birthday (1972)
+9/13	Pallavi Ramam's Birthday
+9/20	Erin Caswell Stone's Birthday (1975)
+9/22	Alan Post's Birthday (1977)
+10/5	Katie Elmore's Birthday (1975)
+10/23   Sophia Rose Leamy's Birthday (2003)
+11/22	Brian Hill's Birthday
+12/10	Jason Herfurth's Birthday (1972)
+12/25	Faith Hinkley's Birthday (1972)
+
+/* Anniversaries */
+3/08    Ian & Sarah Wallace's Anniversary (2003)
+4/24	Erin & John Stone's Anniversary (1999)
+5/01    Ed & Emily Caldwell's Anniversary (2002)
+5/12	Mom & Dad's Anniversary (1962)
+5/30    Kris & Liz Wallace's Anniversary (2004)
+6/15    Hunter & Lori Merrit's Wedding (2002)
+6/22	Tom & Gale Caswell's Anniversary (1968)
+8/14    Jon & Jessica Lamb's Anniversary (1999?)
+10/12   David & Jen Ferguson's Anniversary (2000)
+
+/* Holidays */
+2/14	Valentine's Day
+3/17	St. Patrick's Day
+Easter	Easter
+10/31	Halloween
+11/27	Thanksgiving
+12/25	Christmas
+12/31	New Year's Eve
+
+#include <calendar.usholiday>
+#include <calendar.christian>
+// #include <calendar.judaic>
