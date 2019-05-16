@@ -1,3 +1,8 @@
 
 cd ~/dotfiles
-stow vim
+
+== New System Setup ==
+
+sudo pkg install bash gcalcli i3wm nethack tmux vim
+sudo gem install thyme
+./install.sh

@@ -4,7 +4,7 @@
 # bashrc is used for non-login interactive shells
 echo "Processing ~/.bashrc..."
 
-PATH=$PATH:~/usr/bin
+PATH=$PATH:~/usr/bin:~/go/bin
 
 # Colors chart: https://linuxconfig.org/bash-prompt-basics
 # XXX: Using escape sequences caused problems, so redditor

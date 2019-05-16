@@ -84,8 +84,8 @@ disk "/pool" {
 }
 
 volume master {
-    format = "  %volume"
-    format_muted = "  %volume [Mute]"
+    format = "♪ %volume"
+    format_muted = "♪ %volume [Mute]"
     device = "default"
     mixer = "Master"
     mixer_idx = 0

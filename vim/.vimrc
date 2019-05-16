@@ -16,10 +16,6 @@ Plugin 'VundleVim/Vundle.vim'
 call vundle#end()
 filetype plugin indent on
 
-"set rtp+=~/usr/src/fzf/
-"Plugin 'junegunn/fzf'
-"Plugin 'junegunn/fzf.vim'
-
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 let g:airline_theme='solarized'
@@ -55,8 +51,8 @@ set incsearch
 " no ^Ms
 set ff=unix
 
-set spell           " spell checker!
-set noignorecase
+"setlocal spell           " spell checker!
+"set noignorecase
 set smartcase
 " set smartindent
 set cindent
@@ -69,6 +65,7 @@ set softtabstop=4
 set smarttab
 set textwidth=79
 set shiftwidth=4
+set scrolloff=5
 "autocmd FileType c set cindent
 "autocmd FileType cpp set cindent
 "autocmd FileType php set cindent
@@ -98,9 +95,10 @@ set undodir='~/.vim/undo/'
 " F7 - copy
 " Shift F7 - paste
 set clipboard+=unnamed
-map <F7> :w!xclip<CR><CR>
-vmap <F7> "*y
-map <S-F7> :r!xclip -o<CR>
+"map <F7> :w!xclip<CR><CR>
+vnoremap <C-C> :w !xclip -i -sel c<CR><CR>
+"vmap <F7> "*y
+" map <S-F7> :r!xclip -o<CR>
 
 "set termguicolors " was promised magic, but it makes things worse..
 
@@ -120,11 +118,15 @@ Bundle 'wellle/tmux-complete.vim'
 
 " These are supposed to invoke fzf cleverly.. I don't get it.  Need
 " the fzf plugin!
-"nnoremap ; :Buffers<CR>
-"nnoremap f :Files<CR>
-"nnoremap T :Tags<CR>
-"nnoremap t :BTags<CR>
-"nnoremap s :Ag<CR>
+set rtp+=~/usr/src/fzf/
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
+
+nnoremap ; :Buffers<CR>
+nnoremap f :Files<CR>
+nnoremap T :Tags<CR>
+nnoremap t :BTags<CR>
+nnoremap s :Ag<CR>
 
 " Vimwiki settings
 let g:vimwiki_folding='expr:quick'
