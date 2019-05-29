@@ -136,6 +136,7 @@ assign [title="\(Private Browsing\)$"] $ws8
 assign [class="Firefox"] $ws2
 assign [class="libreoffice"] $ws3
 assign [class="libreoffice-writer"] $ws3
+assign [class="libreoffice-calc"] $ws3
 assign [class="Rhythmbox"] $ws9
 
 # Layout settings
