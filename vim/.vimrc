@@ -60,7 +60,7 @@ set cindent
 " set indentexpr
 set shiftwidth=4
 set tabstop=4       " tab stop of 4 characters
-set softtabstop=4
+"set softtabstop=4
 " 2019: I now believe in tabs! set expandtab       " write spaces, not tabs
 set smarttab
 set textwidth=79

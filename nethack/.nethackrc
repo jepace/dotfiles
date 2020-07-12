@@ -4,8 +4,9 @@ OPTIONS=fruit:pussy, hilite_pet, hilite_pile, horsename:Gypsy, !legacy
 OPTIONS=menucolors, menustyle:combination, msghistory:30
 OPTIONS=msg_window:combination, number_pad:0, pettype:dog, pickup_thrown
 OPTIONS=pickup_types:$"?+!=/, pushweapon, rest_on_space, safe_pet
-OPTIONS=scores:o 3a 10t, !showexp, silent, standout
-OPTIONS=symset:DECgraphics, time
+OPTIONS=scores:o 3a 10t, !showexp, silent, standout, time
+#OPTIONS=symset:IBMgraphics
+OPTIONS=symset:DECgraphics
 
 OPTIONS=statushilites
 ## Coming in 3.6.1
