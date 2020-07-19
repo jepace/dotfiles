@@ -43,7 +43,7 @@ case "$OSTYPE" in
         ;;
     linux-gnu*)
         echo "LINUX"
-        LSflags="-FGAhf --color=auto"
+        LSflags="-FGAh --color=auto"
         ;;
     cygwin)
         echo "Cygwin"
