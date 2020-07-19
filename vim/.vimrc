@@ -18,10 +18,23 @@ filetype plugin indent on
 
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'mhinz/vim-startify'
 let g:airline_theme='solarized'
 let g:airline_solarized_bg='dark'
 let g:airline_powerline_fonts = 1 
+
+Plugin 'mhinz/vim-startify'				" Starup menu
+Plugin 'preservim/nerdtree'				" Directory tree
+Plugin 'rhysd/open-pdf.vim'				" Convert PDFs to text
+let g:pdf_convert_on_edit=1
+let g:pdf_convert_on_read=1
+
+Plugin 'fatih/vim-go'					" Go tools
+
+" NerdTree on starup
+" Blows up startify
+autocmd StdinReadPre * let s:std_in=1
+" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
 
 let g:explVertical=1    " split Explorer window vertically
 let g:explSplitRight=0  " split to right of explorer
