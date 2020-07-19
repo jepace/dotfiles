@@ -89,7 +89,8 @@ set scrolloff=5
 
 set wildmenu    " show possible matches when tab hit
 
-set title
+set autowrite	" Autosave
+"set title
 "set notitle
 "set titleold="Remote"
 set ruler
