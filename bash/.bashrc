@@ -100,10 +100,7 @@ tman () { tmux split-window -h -p 40 "man" "$@" || exit; }
 # Taskwarrior
 [ -f ~/.bash/task.sh ] && source ~/.bash/task.sh
 
-
-eval $(thefuck --alias)
-
-
+#eval $(thefuck --alias)
 
 
 

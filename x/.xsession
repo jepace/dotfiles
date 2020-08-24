@@ -1,3 +1,13 @@
 #!/bin/sh
 #/usr/local/bin/gnome-session
-exec /usr/bin/ssh-agent /usr/local/bin/startxfce4 --with-ck-launch
+case "$OSTYPE" in
+	freebsd*)
+		BINDIR="/usr/local/bin"
+		;;
+	linux-gnu*)
+		BINDIR="/usr/bin"
+		;;
+esac
+
+[ -f $BINDIR/urxvt ] && export TERMINAL="$BINDIR/urxvt"
+exec $BINDIR/ssh-agent $BINDIR/i3
