@@ -144,7 +144,7 @@ nnoremap t :BTags<CR>
 nnoremap s :Ag<CR>
 
 " Vimwiki settings
-let g:vimwiki_folding='expr:quick'
+" let g:vimwiki_folding='expr:quick'
 let g:vimwiki_list = [{'path' : '~/PaceHouse/vimwiki/', 
                      \ 'path_html' : '~/public_html/wiki/',
                      \ 'auto_export' : 1 }]

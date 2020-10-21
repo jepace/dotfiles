@@ -4,7 +4,12 @@ case "$OSTYPE" in
 	freebsd*)
 		BINDIR="/usr/local/bin"
 		;;
-	linux-gnu*)
+	linux*)
+		BINDIR="/usr/bin"
+		;;
+	*)
+		# xrdp based chain on WSL / Ubuntu doesn't come in with
+		# OSTYPE..
 		BINDIR="/usr/bin"
 		;;
 esac
