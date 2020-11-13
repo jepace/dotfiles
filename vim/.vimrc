@@ -131,6 +131,8 @@ Bundle 'christoomey/vim-tmux-navigator'
 Plugin 'vimwiki/vimwiki'
 Bundle 'wellle/tmux-complete.vim'
 
+Bundle 'farseer90718/vim-taskwarrior'
+
 " These are supposed to invoke fzf cleverly.. I don't get it.  Need
 " the fzf plugin!
 set rtp+=~/usr/src/fzf/
