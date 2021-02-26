@@ -24,6 +24,7 @@ let g:airline_powerline_fonts = 1
 
 Plugin 'mhinz/vim-startify'				" Starup menu
 Plugin 'preservim/nerdtree'				" Directory tree
+Plugin 'machakann/vim-highlightedyank'	" Highlight yanks
 Plugin 'rhysd/open-pdf.vim'				" Convert PDFs to text
 let g:pdf_convert_on_edit=1
 let g:pdf_convert_on_read=1
