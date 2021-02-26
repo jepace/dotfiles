@@ -30,7 +30,9 @@ let g:pdf_convert_on_edit=1
 let g:pdf_convert_on_read=1
 
 Plugin 'fatih/vim-go'					" Go tools
-Plugin 'chaoren/vim-wordmotion'			"CamelCase to words
+Plugin 'chaoren/vim-wordmotion'			" CamelCase to words
+Plugin 'Yggdroot/indentLine'			" Show Indents
+let g:indentLine_char = ':'
 
 " NerdTree on starup
 " Blows up startify
