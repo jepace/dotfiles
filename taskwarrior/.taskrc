@@ -25,9 +25,10 @@ data.location=~/.task
 #include /usr/local/share/taskwarrior/rc/dark-yellow-green.theme
 #include /usr/local/share/taskwarrior/rc/dark-gray-256.theme
 #include /usr/local/share/taskwarrior/rc/dark-gray-blue-256.theme
-include /usr/local/share/taskwarrior/rc/solarized-dark-256.theme
+#include /usr/local/share/taskwarrior/rc/solarized-dark-256.theme
 #include /usr/local/share/taskwarrior/rc/solarized-light-256.theme
 #include /usr/local/share/taskwarrior/rc/no-color.theme
+include /home/jepace/.task/solarized-dark-256.theme
 
 taskd.certificate=/home/jepace/.task/james_pace.cert.pem
 taskd.key=/home/jepace/.task/james_pace.key.pem
