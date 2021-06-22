@@ -89,6 +89,9 @@ man() {
 peek() { tmux split-window -p 33 "$EDITOR" "$@" || exit; }
 tman () { tmux split-window -h -p 40 "man" "$@" || exit; }
 
+jagular() { [ -z "${TMUX}" ] && ssh jagular || tmux new-window -n jagular ssh jagular || exit; }
+tigger() { [ -z "${TMUX}" ] && ssh tigger || tmux new-window -n tigger ssh tigger || exit; }
+
 # TODO: Make this better and more automatic
 # Bring in fzf completions
 [ -f ~/.bash/completion.bash ] && \
