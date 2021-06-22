@@ -96,6 +96,8 @@ tman () { tmux split-window -h -p 40 "man" "$@" || exit; }
 [ -f ~/.bash/key-bindings.bash ] && \
     source ~/.bash/key-bindings.bash
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+[ -f ~/.bash/cheat.sh.bash ] && \
+    source ~/.bash/cheat.sh.bash
 
 # Taskwarrior
 [ -f ~/.bash/task.sh ] && source ~/.bash/task.sh
