@@ -33,8 +33,18 @@ set -o vi
 case "$OSTYPE" in
     freebsd*) 
         echo "FreeBSD"
-        LSflags="-FGIah"
+        LSflags="-FGIash"
         ;;
+	openbsd*)
+		echo "OpenBSD"
+		LSflags="-Fash"
+		;;
+	netbsd*)
+		echo "NetBSD"
+		LSflags="-Fash"
+		# Ifconfig isn't in PATH already??
+		PATH=$PATH:/sbin
+		;;
     solaris*)
         echo "SOLARIS"
         ;;
@@ -92,18 +102,11 @@ tman () { tmux split-window -h -p 40 "man" "$@" || exit; }
 jagular() { [ -z "${TMUX}" ] && ssh jagular || tmux new-window -n jagular ssh jagular || exit; }
 tigger() { [ -z "${TMUX}" ] && ssh tigger || tmux new-window -n tigger ssh tigger || exit; }
 
-# TODO: Make this better and more automatic
-# Bring in fzf completions
-[ -f ~/.bash/completion.bash ] && \
-    source ~/.bash/completion.bash
-[ -f ~/.bash/key-bindings.bash ] && \
-    source ~/.bash/key-bindings.bash
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-[ -f ~/.bash/cheat.sh.bash ] && \
-    source ~/.bash/cheat.sh.bash
-
-# Taskwarrior
-[ -f ~/.bash/task.sh ] && source ~/.bash/task.sh
+# Load command line completions
+for i in ~/.bash/*
+do
+	[ -f $i ] && source $i
+done
 
 #eval $(thefuck --alias)
 

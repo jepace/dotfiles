@@ -2,6 +2,8 @@
 " Vim Resrouce File
 " for James E. Pace
 
+set encoding=utf-8
+
 "Vundle
 set nocompatible
 filetype off
@@ -16,23 +18,37 @@ Plugin 'VundleVim/Vundle.vim'
 call vundle#end()
 filetype plugin indent on
 
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-let g:airline_theme='solarized'
-let g:airline_solarized_bg='dark'
-let g:airline_powerline_fonts = 1 
-
+"Plugin 'vim-airline/vim-airline'
+"Plugin 'vim-airline/vim-airline-themes'
+Plugin 'gruvbox-community/gruvbox'
 Plugin 'mhinz/vim-startify'				" Starup menu
 Plugin 'preservim/nerdtree'				" Directory tree
 Plugin 'machakann/vim-highlightedyank'	" Highlight yanks
 Plugin 'rhysd/open-pdf.vim'				" Convert PDFs to text
-let g:pdf_convert_on_edit=1
-let g:pdf_convert_on_read=1
-
 Plugin 'fatih/vim-go'					" Go tools
 Plugin 'chaoren/vim-wordmotion'			" CamelCase to words
 Plugin 'Yggdroot/indentLine'			" Show Indents
+Plugin 'dbeniamine/cheat.sh-vim'
+"Plugin 'Valloric/YouCompleteMe'
+Plugin 'vimwiki/vimwiki'
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
+Plugin 'neoclide/coc.nvim'
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'wellle/tmux-complete.vim'
+Plugin 'farseer90718/vim-taskwarrior'
+"Bundle 'christoomey/vim-tmux-navigator'
+"Bundle 'wellle/tmux-complete.vim'
+"Bundle 'farseer90718/vim-taskwarrior'
+
+let g:airline_theme='solarized'
+let g:airline_solarized_bg='dark'
+let g:airline_powerline_fonts = 1 
+let g:pdf_convert_on_edit=1
+let g:pdf_convert_on_read=1
 let g:indentLine_char = ':'
+
+colorscheme gruvbox
 
 " NerdTree on starup
 " Blows up startify
@@ -51,7 +67,7 @@ syntax on
 set hlsearch                " Highlight search results
 set mousehide
 set number                  " Line numbers
-" set relativenumber          " Woah...
+set relativenumber          " Woah...
 
 set startofline
 
@@ -83,7 +99,7 @@ set tabstop=4       " tab stop of 4 characters
 set smarttab
 set textwidth=79
 set shiftwidth=4
-set scrolloff=5
+set scrolloff=8
 "autocmd FileType c set cindent
 "autocmd FileType cpp set cindent
 "autocmd FileType php set cindent
@@ -130,18 +146,10 @@ imap jj <ESC>:w<CR>a
 "ab dbg #ifdef DEBUG
 "ab w32 if ( $^O eq "MSWin32" )
 
-"A whole new world ... Bundles! (need vundle)
-Bundle 'christoomey/vim-tmux-navigator'
-Plugin 'vimwiki/vimwiki'
-Bundle 'wellle/tmux-complete.vim'
-
-Bundle 'farseer90718/vim-taskwarrior'
 
 " These are supposed to invoke fzf cleverly.. I don't get it.  Need
 " the fzf plugin!
 set rtp+=~/usr/src/fzf/
-Plugin 'junegunn/fzf'
-Plugin 'junegunn/fzf.vim'
 
 nnoremap ; :Buffers<CR>
 nnoremap f :Files<CR>
@@ -157,3 +165,12 @@ let g:vimwiki_list = [{'path' : '~/PaceHouse/vimwiki/',
 
 " tmux complete
 let g:tmuxcomplete#trigger = 'completefunc'
+
+" Primeagen
+set signcolumn=yes
+set colorcolumn=80
+set cmdheight=2
+set shiftround
+"highlight Normal guibg=none
+"
+"
