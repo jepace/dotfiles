@@ -81,7 +81,9 @@ export EDITOR="`which vim`"
 export PAGER="`which less`"
 alias mroe="more"
 
-set colored-stats="on"
+set menu-complete-display-prefix="On"
+set colored-stats="On"
+
 cd ~
 
 man() {
@@ -97,8 +99,8 @@ man() {
 peek() { [ -z "${TMUX}" ] && tmux split-window -p 33 "$EDITOR" "$@" || "$EDITOR" "$@"; }
 tman () { [ -z "${TMUX}" ] && tmux split-window -h -p 40 "man" "$@" || "man" "$@"; }
 
-jagular() { [ -z "${TMUX}" ] && ssh jagular || tmux new-window -n jagular ssh jagular || exit; }
-tigger() { [ -z "${TMUX}" ] && ssh tigger || tmux new-window -n tigger ssh tigger || exit; }
+jagular() { [ -z "${TMUX}" ] && ssh jagular || tmux new-window -n jagular ssh jagular; tmux last-window || exit; }
+tigger() { [ -z "${TMUX}" ] && ssh tigger || tmux new-window -n tigger ssh tigger; tmux last-window|| exit; }
 
 # History -- I should learn it...
 # don't put duplicate lines or lines starting with space in the history.
