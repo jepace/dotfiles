@@ -20,13 +20,14 @@ filetype plugin indent on
 
 "Plugin 'vim-airline/vim-airline'
 "Plugin 'vim-airline/vim-airline-themes'
-Plugin 'gruvbox-community/gruvbox'
+"Plugin 'gruvbox-community/gruvbox'
+Plugin 'arcticicestudio/nord-vim'
 Plugin 'mhinz/vim-startify'				" Starup menu
 Plugin 'preservim/nerdtree'				" Directory tree
 Plugin 'machakann/vim-highlightedyank'	" Highlight yanks
 Plugin 'rhysd/open-pdf.vim'				" Convert PDFs to text
 Plugin 'fatih/vim-go'					" Go tools
-Plugin 'chaoren/vim-wordmotion'			" CamelCase to words
+"Plugin 'chaoren/vim-wordmotion'			" CamelCase to words
 Plugin 'Yggdroot/indentLine'			" Show Indents
 Plugin 'dbeniamine/cheat.sh-vim'
 "Plugin 'Valloric/YouCompleteMe'
@@ -48,7 +49,8 @@ let g:pdf_convert_on_edit=1
 let g:pdf_convert_on_read=1
 let g:indentLine_char = ':'
 
-colorscheme gruvbox
+colorscheme nord
+"colorscheme gruvbox
 
 " NerdTree on starup
 " Blows up startify

@@ -1,5 +1,4 @@
 # .bashrc
-# $Id: $
 
 # bashrc is used for non-login interactive shells
 echo "Processing ~/.bashrc..."
@@ -25,23 +24,24 @@ export SUDO_PS1='\h [\u:\[\e[00;36m\]\w\[\e[00m\]]\$ '
 
 set -o vi
 
-# Bash-completion
-[[ $PS1 && -f /usr/local/share/bash-completion/bash_completion.sh ]] && \
-    source /usr/local/share/bash-completion/bash_completion.sh
-
 # OS specific settings
 case "$OSTYPE" in
     freebsd*) 
         echo "FreeBSD"
         LSflags="-FGIash"
+		alias nif="sudo service netif restart"
+		alias df="df -H"
+		alias psa="ps -auxww"
         ;;
 	openbsd*)
 		echo "OpenBSD"
 		LSflags="-Fash"
+		alias psa="ps -auxww"
 		;;
 	netbsd*)
 		echo "NetBSD"
 		LSflags="-Fash"
+		alias psa="ps -auxww"
 		# Ifconfig isn't in PATH already??
 		PATH=$PATH:/sbin
 		;;
@@ -54,6 +54,7 @@ case "$OSTYPE" in
     linux-gnu*)
         echo "LINUX"
         LSflags="-FGAh --color=auto"
+		alias psa="ps -ef"
         ;;
     cygwin)
         echo "Cygwin"
@@ -63,17 +64,13 @@ case "$OSTYPE" in
         ;;
 esac
 
-alias vi="vim"
-alias df="df -H"
+[ -x `which vim` ] && alias vi="vim"
 alias c="clear"
 alias x="exit"
 alias cdc="cd; clear"
-alias mroe="more"
-alias tty-clock="tty-clock -x -c -C 6 -t -B"
-alias psa="ps -auxww"
-alias nif="sudo service netif restart"
 alias feh="feh --output-dir ~/Downloads/Pictures/feh/ --scale-down "
 alias t="task"
+[ -x `which tty-clock` ] && alias tty-clock="tty-clock -x -c -C 6 -t -B"
 
 # ls customization
 export LSCOLORS="gxfxcxdxbxegedabagacad"
@@ -82,6 +79,7 @@ alias ll="ls -l $LSflags"
 
 export EDITOR="`which vim`"
 export PAGER="`which less`"
+alias mroe="more"
 
 set colored-stats="on"
 cd ~
@@ -96,17 +94,35 @@ man() {
     command man "$@"
 }
 
-peek() { tmux split-window -p 33 "$EDITOR" "$@" || exit; }
-tman () { tmux split-window -h -p 40 "man" "$@" || exit; }
+peek() { [ -z "${TMUX}" ] && tmux split-window -p 33 "$EDITOR" "$@" || "$EDITOR" "$@"; }
+tman () { [ -z "${TMUX}" ] && tmux split-window -h -p 40 "man" "$@" || "man" "$@"; }
 
 jagular() { [ -z "${TMUX}" ] && ssh jagular || tmux new-window -n jagular ssh jagular || exit; }
 tigger() { [ -z "${TMUX}" ] && ssh tigger || tmux new-window -n tigger ssh tigger || exit; }
 
+# History -- I should learn it...
+# don't put duplicate lines or lines starting with space in the history.
+# See bash(1) for more options
+HISTCONTROL=ignoreboth
+
+# append to the history file, don't overwrite it
+shopt -s histappend
+
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTSIZE=1000
+HISTFILESIZE=2000
+
 # Load command line completions
+[ -f /usr/local/share/bash-completion/bash_completion.sh ] && source /usr/local/share/bash-completion/bash_completion.sh
+
 for i in ~/.bash/*
 do
 	[ -f $i ] && source $i
 done
+
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
 
 #eval $(thefuck --alias)
 
@@ -125,21 +141,7 @@ done
 #      *) return;;
 #esac
 #
-## don't put duplicate lines or lines starting with space in the history.
-## See bash(1) for more options
-#HISTCONTROL=ignoreboth
-#
-## append to the history file, don't overwrite it
-#shopt -s histappend
-#
-## for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-#HISTSIZE=1000
-#HISTFILESIZE=2000
-#
-## check the window size after each command and, if necessary,
-## update the values of LINES and COLUMNS.
-#shopt -s checkwinsize
-#
+
 ## If set, the pattern "**" used in a pathname expansion context will
 ## match all files and zero or more directories and subdirectories.
 ##shopt -s globstar
