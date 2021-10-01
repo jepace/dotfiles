@@ -30,7 +30,7 @@ case "$OSTYPE" in
         echo "FreeBSD"
         LSflags="-FGIash"
 		alias nif="sudo service netif restart"
-		alias df="df -H"
+		alias df="df -h"
 		alias psa="ps -auxww"
         ;;
 	openbsd*)
@@ -54,6 +54,7 @@ case "$OSTYPE" in
     linux-gnu*)
         echo "LINUX"
         LSflags="-FGAh --color=auto"
+		alias df="df -h"
 		alias psa="ps -ef"
         ;;
     cygwin)
@@ -63,6 +64,9 @@ case "$OSTYPE" in
         echo "unknown: $OSTYPE"
         ;;
 esac
+
+# Enable zoxide - the cd tool
+[ -x `which zoxide` ] && eval "$(zoxide init bash)"
 
 [ -x `which vim` ] && alias vi="vim"
 alias c="clear"
@@ -125,6 +129,9 @@ done
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
+
+# Make ** work for multi-level wildcards
+shopt -s globstar
 
 #eval $(thefuck --alias)
 
