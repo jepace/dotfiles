@@ -34,7 +34,10 @@ Plugin 'dbeniamine/cheat.sh-vim'
 Plugin 'vimwiki/vimwiki'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
+
 Plugin 'neoclide/coc.nvim'
+let g:coc_disable_startup_warning = 1
+
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'wellle/tmux-complete.vim'
 Plugin 'farseer90718/vim-taskwarrior'
