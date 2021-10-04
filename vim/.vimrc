@@ -148,7 +148,6 @@ imap jj <ESC>:w<CR>a
 "ab dbg #ifdef DEBUG
 "ab w32 if ( $^O eq "MSWin32" )
 
-
 " These are supposed to invoke fzf cleverly.. I don't get it.  Need
 " the fzf plugin!
 set rtp+=~/usr/src/fzf/
@@ -175,4 +174,32 @@ set cmdheight=2
 set shiftround
 "highlight Normal guibg=none
 "
-"
+" Primeagen
+" Y to yank to the end of the line
+nnoremap Y y$
+
+" keep the cursor centered
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap J mzJ'z
+
+" undo break points
+inoremap , ,<c-g>u
+inoremap . .<c-g>u
+inoremap ! !<c-g>u
+inoremap ? ?<c-g>u
+
+" jumplist mutations
+nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
+nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
+
+" moving lines around
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '>-2<CR>gv=gv
+inoremap <C-j> <esc>:m .+1<CR>==
+inoremap <C-k> <esc>:m .-2<CR>==
+nnoremap <leader>k :m .-2<CR>==
+nnoremap <leader>j :m .+1<CR>==
+nnoremap <leader>k :m .-2<CR>==
+nnoremap <leader>k :m .-2<CR>==
+
