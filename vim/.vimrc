@@ -1,208 +1,183 @@
-" $Id: .vimrc,v 1.6 2017/10/18 22:53:35 jepace Exp $
-" Vim Resrouce File
-" for James E. Pace
+" .vimrc — @jepace
+" Cross-platform, portable, annotated Vim config
 
-set encoding=utf-8
+" === Core Vim Settings ===
+set nocompatible              " Use Vim defaults, not Vi
+set encoding=utf-8            " UTF-8 encoding
+filetype plugin indent on     " Enable filetype-based plugins and indenting
+syntax enable                 " Turn on syntax highlighting
 
-"Vundle
-set nocompatible
-filetype off
+" === Clipboard and Undo ===
+if has("clipboard")
+  set clipboard=unnamedplus   " Use system clipboard (if available)
+endif
+set undofile                  " Persistent undo
+set undodir=~/.vim/undo       " Where to store undo files
+set noswapfile                " Don't write .swp files
 
-" FIRST: 
-" git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-" :PluginInstall
-"
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
-call vundle#end()
-filetype plugin indent on
+" === Display and UI ===
+set number relativenumber     " Show line numbers and relative numbers
+set showcmd                   " Show command in bottom bar
+set signcolumn=yes            " Keep signcolumn visible
+set colorcolumn=80            " Highlight column 80
+set cursorline                " Highlight the current line
+set termguicolors             " Enable truecolor support (for nice themes)
+set mouse=a                   " Enable mouse support
 
-"Plugin 'vim-airline/vim-airline'
-"Plugin 'vim-airline/vim-airline-themes'
-"Plugin 'gruvbox-community/gruvbox'
-Plugin 'arcticicestudio/nord-vim'
-Plugin 'mhinz/vim-startify'				" Starup menu
-Plugin 'preservim/nerdtree'				" Directory tree
-Plugin 'machakann/vim-highlightedyank'	" Highlight yanks
-Plugin 'rhysd/open-pdf.vim'				" Convert PDFs to text
-Plugin 'fatih/vim-go'					" Go tools
-"Plugin 'chaoren/vim-wordmotion'			" CamelCase to words
-Plugin 'Yggdroot/indentLine'			" Show Indents
-Plugin 'dbeniamine/cheat.sh-vim'
-"Plugin 'Valloric/YouCompleteMe'
-Plugin 'vimwiki/vimwiki'
-Plugin 'junegunn/fzf'
-Plugin 'junegunn/fzf.vim'
+" === Tabs, Indents, Wrapping ===
+set tabstop=4 shiftwidth=4 softtabstop=4 expandtab " 4-space tabs
+set smartindent autoindent                       " Auto-indent nicely
+set whichwrap+=<,>,h,l                           " Move past line boundaries
 
-Plugin 'neoclide/coc.nvim'
-let g:coc_disable_startup_warning = 1
+" === Scrolling and Windows ===
+set scrolloff=8 sidescrolloff=5 " Keep cursor centered vertically/horizontally
+set splitbelow splitright      " Open new splits below/right
 
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'wellle/tmux-complete.vim'
-Plugin 'farseer90718/vim-taskwarrior'
-"Bundle 'christoomey/vim-tmux-navigator'
-"Bundle 'wellle/tmux-complete.vim'
-"Bundle 'farseer90718/vim-taskwarrior'
+" === Searching ===
+set hlsearch incsearch         " Highlight and live update
+set ignorecase smartcase       " Case-insensitive unless caps used
 
-let g:airline_theme='solarized'
-let g:airline_solarized_bg='dark'
-let g:airline_powerline_fonts = 1 
-let g:pdf_convert_on_edit=1
-let g:pdf_convert_on_read=1
-let g:indentLine_char = ':'
+" === Performance ===
+set updatetime=300             " Reduce CursorHold delay
+set timeoutlen=500             " Faster escape
+set hidden                     " Allow background buffers
 
-colorscheme nord
-"colorscheme gruvbox
+" === Wildmenu (command-line completion) ===
+set wildmenu
+set wildmode=longest:full,full
+set shortmess+=c
 
-" NerdTree on starup
-" Blows up startify
-autocmd StdinReadPre * let s:std_in=1
-" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
+" === Bootstrapping vim-plug ===
+let s:plug_path = expand('~/.vim/autoload/plug.vim')
+if !filereadable(s:plug_path)
+  echo "Installing vim-plug..."
+  silent execute '!curl -fLo ' . shellescape(s:plug_path) . ' --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall | source $MYVIMRC
+endif
 
-let g:explVertical=1    " split Explorer window vertically
-let g:explSplitRight=0  " split to right of explorer
-let g:explDirsFirst=0   " Dirs mixed with files in Explorer
-let g:explWinSize=20    " Width of Explorer window
+" === Load plugins only if vim-plug is installed ===
+if filereadable(s:plug_path)
+  call plug#begin('~/.vim/plugged')
+endif
 
-syntax on
+" === Plugins ===
+" Interface
+Plug 'vim-airline/vim-airline'              " Lean status/tabline
+Plug 'vim-airline/vim-airline-themes'       " Themes for airline
+" Plug 'arcticicestudio/nord-vim'             " Nord colorscheme (cool tones)
+Plug 'morhetz/gruvbox'
+Plug 'mhinz/vim-startify'                   " Fancy start screen with MRU
 
-"let c_comment_strings=1
-set hlsearch                " Highlight search results
-set mousehide
-set number                  " Line numbers
-set relativenumber          " Woah...
+" Files and Navigation
+Plug 'preservim/nerdtree'                   " File browser panel
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " Fuzzy finder binary
+Plug 'junegunn/fzf.vim'                     " Vim integration for FZF
 
-set startofline
+" Coding
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' } " Full-featured Go dev
+Plug 'Yggdroot/indentLine'                  " Visual guide for indentation
 
-" spelling check // Use built in set spell now
-" map #i  :w<CR>:!aspell -c %<CR>:e %<CR>
-" map #i  :w<CR>:!ispell %<CR>:e %<CR>
+" LSP & IntelliSense
+if has('nvim') || v:version >= 900
+    if executable('node')
+        Plug 'neoclide/coc.nvim', {'branch': 'release'} 
+    else
+        Plug 'prabirshrestha/asynccomplete.vim'
+        Plug 'prabirshrestha/vim-lsp'
+    endif
+endif
 
-" remove extra white space at end of line; cutting and pasting is
-" doing this now
-map #w :%s/ *$//
+Plug 'wellle/tmux-complete.vim'             " Autocompletion across tmux panes
 
-"show match for partly typed search command
-set incsearch
+" Text Handling
+Plug 'machakann/vim-highlightedyank'        " Highlight yanked text briefly
+Plug 'rhysd/open-pdf.vim'                   " View PDFs (for LaTeX etc)
+Plug 'dbeniamine/cheat.sh-vim'              " Query cheat.sh from Vim
+Plug 'vimwiki/vimwiki'                      " Personal wiki and note-taking
+Plug 'farseer90718/vim-taskwarrior'         " Integrate Taskwarrior
 
-" no ^Ms
-set ff=unix
+" Tmux Navigation
+Plug 'christoomey/vim-tmux-navigator'       " Seamless movement between tmux/vim
 
-"setlocal spell           " spell checker!
-"set noignorecase
-set smartcase
-" set smartindent
-set cindent
-" set cinoptions=t0,(0
-" set indentexpr
-set shiftwidth=4
-set tabstop=4       " tab stop of 4 characters
-"set softtabstop=4
-" 2019: I now believe in tabs! set expandtab       " write spaces, not tabs
-set smarttab
-set textwidth=79
-set shiftwidth=4
-set scrolloff=8
-"autocmd FileType c set cindent
-"autocmd FileType cpp set cindent
-"autocmd FileType php set cindent
-"autocmd FileType go set cindent
-"autocmd FileType python set cindent
-"autocmd FileType perl call Set_perl_mode()
+call plug#end()
 
-set wildmenu    " show possible matches when tab hit
+" === Mappings ===
+let mapleader=","                         " Leader key
 
-set autowrite	" Autosave
-"set title
-"set notitle
-"set titleold="Remote"
-set ruler
-set visualbell
-set showmode
-set writeany
-set tw=70           " line width
-set showmatch
-"set redraw
-"set nobackup
+" General keybinds
+nnoremap <leader>w :w<CR>                  " Save
+nnoremap <leader>q :q<CR>                  " Quit
+nnoremap <leader>e :NERDTreeToggle<CR>     " Toggle NERDTree
+nnoremap <leader>s :source $MYVIMRC<CR>    " Reload config
 
-set undofile
-set undodir='~/.vim/undo/'
-
-" Copy and paste ... 
-" the clipboard line was supposed to be magic, but nope..
-" F7 - copy
-" Shift F7 - paste
-set clipboard+=unnamed
-"map <F7> :w!xclip<CR><CR>
-vnoremap <C-C> :w !xclip -i -sel c<CR><CR>
-"vmap <F7> "*y
-" map <S-F7> :r!xclip -o<CR>
-
-"set termguicolors " was promised magic, but it makes things worse..
-
-" Save and continue editing
-imap jj <ESC>:w<CR>a
-
-" My abbreviations
-"ab jep /* JEP */
-"ab endif #endif
-"ab dbg #ifdef DEBUG
-"ab w32 if ( $^O eq "MSWin32" )
-
-" These are supposed to invoke fzf cleverly.. I don't get it.  Need
-" the fzf plugin!
-set rtp+=~/usr/src/fzf/
-
-nnoremap ; :Buffers<CR>
-nnoremap f :Files<CR>
-nnoremap T :Tags<CR>
-nnoremap t :BTags<CR>
-nnoremap s :Ag<CR>
-
-" Vimwiki settings
-" let g:vimwiki_folding='expr:quick'
-let g:vimwiki_list = [{'path' : '~/PaceHouse/vimwiki/', 
-                     \ 'path_html' : '~/public_html/wiki/',
-                     \ 'auto_export' : 1 }]
-
-" tmux complete
-let g:tmuxcomplete#trigger = 'completefunc'
-
-" Primeagen
-set signcolumn=yes
-set colorcolumn=80
-set cmdheight=2
-set shiftround
-"highlight Normal guibg=none
-"
-" Primeagen
-" Y to yank to the end of the line
-nnoremap Y y$
-
-" keep the cursor centered
-nnoremap n nzzzv
+" Movement enhancements
+nnoremap Y y$                              " Yank to end of line
+nnoremap n nzzzv                           " Keep search match centered
 nnoremap N Nzzzv
-nnoremap J mzJ'z
+nnoremap J mzJ`z                           " Join lines without losing place
 
-" undo break points
-inoremap , ,<c-g>u
-inoremap . .<c-g>u
-inoremap ! !<c-g>u
-inoremap ? ?<c-g>u
+" Better insert-mode undo chunks
+inoremap , ,<C-g>u
+inoremap . .<C-g>u
+inoremap ! !<C-g>u
+inoremap ? ?<C-g>u
 
-" jumplist mutations
-nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
-nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
-
-" moving lines around
+" Move selected lines
 vnoremap J :m '>+1<CR>gv=gv
-vnoremap K :m '>-2<CR>gv=gv
-inoremap <C-j> <esc>:m .+1<CR>==
-inoremap <C-k> <esc>:m .-2<CR>==
-nnoremap <leader>k :m .-2<CR>==
-nnoremap <leader>j :m .+1<CR>==
-nnoremap <leader>k :m .-2<CR>==
-nnoremap <leader>k :m .-2<CR>==
+vnoremap K :m '<-2<CR>gv=gv
+inoremap <C-j> <Esc>:m .+1<CR>==gi
+inoremap <C-k> <Esc>:m .-2<CR>==gi
+nnoremap <C-j> :m .+1<CR>==
+nnoremap <C-k> :m .-2<CR>==
+
+" FZF keybinds
+nnoremap <C-p> :Files<CR>
+nnoremap <C-b> :Buffers<CR>
+nnoremap <C-t> :Tags<CR>
+
+" Tmux ESC handling (for Neovim)
+if has('nvim')
+  tnoremap <Esc> <C-\><C-n>
+endif
+
+" === Plugin Configs ===
+set background=dark
+colorscheme gruvbox
+let g:airline_theme='gruvbox'
+let g:airline_powerline_fonts=1
+
+let g:NERDTreeShowHidden=1
+autocmd VimEnter * if argc() == 0 | NERDTree | endif
+
+let g:vimwiki_list = [{'path': '~/PaceHouse/vimwiki/',
+                      \ 'path_html': '~/public_html/wiki/',
+                      \ 'auto_export': 1 }]
+
+let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-pyright']
+
+" === Yank highlighting ===
+if has('nvim')
+  autocmd TextYankPost * silent! lua vim.highlight.on_yank()
+else
+  autocmd TextYankPost * silent! call matchadd('IncSearch', '\%'.line("'<").'l\_.*\%'.line("'>").'l')
+endif
+
+" === Filetype-specific ===
+autocmd FileType gitcommit setlocal spell textwidth=72
+autocmd FileType markdown setlocal spell textwidth=80
+
+" === Compatibility safety nets ===
+if !has("clipboard")
+  set clipboard=
+endif
+
+" === Extra: Safe for WSL, BSDs, containers ===
+if !isdirectory(&undodir)
+  call mkdir(&undodir, 'p')
+endif
+
+" === Final Touches ===
+set backspace=indent,eol,start             " Make backspace behave sanely
+set formatoptions+=j                       " Remove comment leader when joining lines
+set matchpairs+=<:>                        " Add angle brackets for % match
 
