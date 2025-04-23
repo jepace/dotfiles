@@ -68,7 +68,12 @@ esac
 # Enable zoxide - the cd tool
 [ -x `which zoxide` ] && eval "$(zoxide init bash)"
 
-[ -x `which vim` ] && alias vi="vim"
+export EDITOR=$(command -v nvim || command -v vim || command -v vi)
+if [ -z "$EDITOR" ]; then
+    echo "No suitable editor found."
+fi
+alias vi=$EDITOR
+
 alias c="clear"
 alias x="exit"
 alias cdc="cd; clear"
@@ -81,7 +86,6 @@ export LSCOLORS="gxfxcxdxbxegedabagacad"
 alias ls="ls $LSflags"
 alias ll="ls -l $LSflags"
 
-export EDITOR="`which vim`"
 export PAGER="`which less`"
 alias mroe="more"
 
